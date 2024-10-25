@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hosting_instance_form" model="ir.ui.view">
+        <field name="name">hosting.instance.form</field>
+        <field name="model">hosting.instance</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_deploy" string="Deploy" type="object" 
+                            class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_stop" string="Stop" type="object" 
+                            attrs="{'invisible': [('state', '!=', 'running')]}"/>
+                    <button name="action_start" string="Start" type="object" 
+                            attrs="{'invisible': [('state', '!=', 'stopped')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="url"/>
+                        </group>
+                        <group>
+                            <field name="port"/>
+                            <field name="db_name"/>
+                            <field name="admin_password" password="True"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hosting_instance_tree" model="ir.ui.view">
+        <field name="name">hosting.instance.tree</field>
+        <field name="model">hosting.instance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="state"/>
+                <field name="url"/>
+                <field name="port"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_hosting_instance" model="ir.actions.act_window">
+        <field name="name">Hosting Instances</field>
+        <field name="res_model">hosting.instance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_hosting_root" 
+              name="Hosting"
+              sequence="100"/>
+
+    <menuitem id="menu_hosting_instance"
+              name="Instances"
+              parent="menu_hosting_root"
+              action="action_hosting_instance"
+              sequence="10"/>
+</odoo>

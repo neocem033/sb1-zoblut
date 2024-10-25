@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit_l10n_tr_einvoice" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.l10n.tr.einvoice</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='invoicing_settings']" position="inside">
+                <div class="col-12 col-lg-6 o_setting_box" id="l10n_tr_einvoice_settings">
+                    <div class="o_setting_left_pane"/>
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Turkey E-Invoice Settings</span>
+                        <div class="text-muted">
+                            Configure e-Invoice integration settings
+                        </div>
+                        <div class="content-group">
+                            <div class="row mt16">
+                                <label for="l10n_tr_einvoice_username" class="col-lg-3"/>
+                                <field name="l10n_tr_einvoice_username"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_tr_einvoice_password" class="col-lg-3"/>
+                                <field name="l10n_tr_einvoice_password" password="True"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_tr_einvoice_test_mode" class="col-lg-3"/>
+                                <field name="l10n_tr_einvoice_test_mode"/>
+                            </div>
+                            <div class="row">
+                                <label for="l10n_tr_einvoice_alias" class="col-lg-3"/>
+                                <field name="l10n_tr_einvoice_alias"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
